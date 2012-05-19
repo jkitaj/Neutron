@@ -3,8 +3,9 @@ package neutron.Logic.Interfaces;
 /**
  * @author Marcin
  */
-public enum PlayerType {
+public enum BorderElementType {
     White,
     Black,
-    Neutron
+    Neutron,
+    Blank
 }
