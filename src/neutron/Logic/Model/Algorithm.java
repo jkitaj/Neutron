@@ -1,5 +1,6 @@
 package neutron.Logic.Model;
 
+import neutron.Logic.Exceptions.GameStateException;
 import java.util.List;
 import neutron.Logic.Interfaces.*;
 
@@ -21,10 +22,16 @@ public class Algorithm implements IAlgorithm {
     }
     
     @Override
-    public IGameState alfabeta(IGameState gameState, int depth) {        
+    public IGameState alfabeta(IGameState gameState, int depth) throws GameStateException {        
         
         logger.writeMessage("Obliczenie ruchu dla stanu gry:");
         logger.writeMessage(gameState.toString());
+        
+        List<IGameState> moves = gameStateGenerator.getNexts(gameState);
+        if(moves == null || moves.isEmpty()) {
+            String msg = "Nie można wykonać kolejnych ruchów.";
+            throw new GameStateException(msg);
+        }
         
         return null;
     }
