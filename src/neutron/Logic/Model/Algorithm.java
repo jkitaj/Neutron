@@ -1,7 +1,7 @@
 package neutron.Logic.Model;
 
-import neutron.Logic.Exceptions.GameStateException;
 import java.util.List;
+import neutron.Logic.Exceptions.GameStateException;
 import neutron.Logic.Interfaces.*;
 
 /**
@@ -33,7 +33,26 @@ public class Algorithm implements IAlgorithm {
             throw new GameStateException(msg);
         }
         
-        return null;
+        // wyszukujemy i zwracamy ruch ktory jest maxem dla gracza ktory wywolal metode
+        // to jest do refaktoryzacji, bo mozna od razu skorzystac z prywatenj metody alfa-beta,
+        // ale tak bylo mi latwiej na pierwszy ogien zlapac odpowiedni nowy ruch
+        
+        double max = Double.MIN_VALUE;
+        IGameState bestState = null;
+        
+        for(IGameState gs : moves) {
+            double val = Math.max(max, alfabeta(gs, depth - 1, Double.MIN_VALUE, Double.MAX_VALUE));
+            if(val >= max)
+            {
+                bestState = gs;
+                max = val;
+            }
+        }
+
+        logger.writeMessage("Najlepszy znaleziony ruch dla gracza to:");
+        logger.writeMessage(bestState.toString()); // null argument exception nie ma prawa sie wydarzyc
+        
+        return bestState;
     }
     
     private double alfabeta(IGameState gameState, int depth, double alpha, double beta) {
