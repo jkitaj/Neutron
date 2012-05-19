@@ -2,6 +2,7 @@ package neutron.Logic.Model;
 
 import neutron.Logic.Interfaces.BorderElementType;
 import neutron.Logic.Interfaces.IGameBorder;
+import neutron.Utils.Position;
 
 /**
  * @author Marcin
@@ -17,5 +18,19 @@ public class GameBorder implements IGameBorder {
     @Override
     public BorderElementType[][] getBorder() {
         return border;
+    }
+
+    @Override
+    public Position getNeutronPosition() {
+        
+        for(int i = 0; i < border.length; ++i) {
+            for(int j = 0; j < border.length; ++j) {
+                if(border[i][j] == BorderElementType.Neutron) {
+                    return new Position(i, j);
+                }
+            }
+        }
+        
+        throw new IllegalStateException();
     }
 }
