@@ -5,7 +5,6 @@ import neutron.Logic.Exceptions.GameStateException;
 import neutron.Logic.Interfaces.*;
 
 /**
- *
  * @author Marcin
  */
 public class Algorithm implements IAlgorithm {
@@ -14,8 +13,7 @@ public class Algorithm implements IAlgorithm {
     private IGameStateGenerator gameStateGenerator;
     private ILogger logger;
     
-    public Algorithm(IHeuristics heuristics, IGameStateGenerator gameStateGenerator, ILogger logger)
-    {
+    public Algorithm(IHeuristics heuristics, IGameStateGenerator gameStateGenerator, ILogger logger) {
         this.heuristics = heuristics;
         this.gameStateGenerator = gameStateGenerator;
         this.logger = logger;
@@ -42,8 +40,7 @@ public class Algorithm implements IAlgorithm {
         
         for(IGameState gs : moves) {
             double val = Math.max(max, alfabeta(gs, depth - 1, Double.MIN_VALUE, Double.MAX_VALUE));
-            if(val >= max)
-            {
+            if(val >= max) {
                 bestState = gs;
                 max = val;
             }
