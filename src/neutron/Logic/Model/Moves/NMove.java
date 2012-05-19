@@ -19,6 +19,10 @@ public class NMove implements IMove {
         
         BorderElementType[][] b = border.getBorder();
         
+        if(pos.getY() == 0) {
+            return null; // ruch w kierunku N nie jest mozliwy
+        }
+        
         for(int j = pos.getY() - 1; j >= 0; --j) {  
             if(b[pos.getX()][j] != BorderElementType.Blank) {
                 if(j - 1 != pos.getY()) {
