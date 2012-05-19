@@ -3,7 +3,7 @@ package neutron.Logic.Model.Moves;
 import neutron.Logic.Interfaces.BorderElementType;
 import neutron.Logic.Interfaces.IGameBorder;
 import neutron.Logic.Interfaces.IMove;
-import neutron.Logic.Model.GameBorder;
+import neutron.Logic.Model.GameBorderFactory;
 import neutron.Utils.Position;
 
 /**
@@ -28,7 +28,7 @@ public class NMove implements IMove {
                     b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                     b[pos.getX()][j - 1] = type;
                 
-                    return new GameBorder(b);
+                    return GameBorderFactory.Create(b);
                 }
                 else {
                     return null;
@@ -41,6 +41,6 @@ public class NMove implements IMove {
         b[pos.getX()][pos.getY()] = BorderElementType.Blank;
         b[pos.getX()][0] = type;
                 
-        return new GameBorder(b);
+        return GameBorderFactory.Create(b);
     }    
 }
