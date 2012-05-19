@@ -33,4 +33,14 @@ public class GameBorder implements IGameBorder {
         
         throw new IllegalStateException();
     }
+
+    @Override
+    public int getBorderSize() {
+        return border.length;
+    }
+
+    @Override
+    public BorderElementType getElement(int i, int j) {
+        return border[i][j];
+    }
 }

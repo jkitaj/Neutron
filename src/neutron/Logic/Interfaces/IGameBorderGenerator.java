@@ -1,6 +1,7 @@
 package neutron.Logic.Interfaces;
 
 import java.util.List;
+import neutron.Logic.Exceptions.NeutronBlockedException;
 
 /**
  * @author Marcin
@@ -15,6 +16,8 @@ public interface IGameBorderGenerator {
     /*
      * Genretates all possible moves for player which is described by parameter.
      * player - BorderElementType.Black or BorderElementType.White.
+     * Return null if any move is possible.
      */
-    List<IGameBorder> generatePossibleMoves(IGameBorder gameBorder, BorderElementType player); 
+    List<IGameBorder> generatePossibleMoves(
+            IGameBorder gameBorder, BorderElementType player) throws NeutronBlockedException; 
 }

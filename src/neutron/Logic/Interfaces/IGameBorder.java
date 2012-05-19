@@ -9,6 +9,9 @@ import neutron.Utils.Position;
  */
 public interface IGameBorder {
     
+    int getBorderSize();
+    BorderElementType getElement(int i, int j);
+    
     BorderElementType[][] getBorder();
 
     Position getNeutronPosition();
