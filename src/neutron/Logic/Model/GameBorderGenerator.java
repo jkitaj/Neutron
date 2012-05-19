@@ -1,8 +1,10 @@
 package neutron.Logic.Model;
 
+import java.util.List;
 import neutron.Logic.Interfaces.BorderElementType;
 import neutron.Logic.Interfaces.IGameBorder;
 import neutron.Logic.Interfaces.IGameBorderGenerator;
+import neutron.Utils.Position;
 
 /**
  * @author Marcin
@@ -36,5 +38,25 @@ public class GameBorderGenerator implements IGameBorderGenerator {
         border[pos][pos] = BorderElementType.Neutron;
         
         return new GameBorder(border);
+    }
+
+    @Override
+    public List<IGameBorderGenerator> generatePossibleMoves(
+            IGameBorder gameBorder, BorderElementType player) {
+        
+        if(player != BorderElementType.Black && player != BorderElementType.White) {
+            throw new IllegalArgumentException();
+        }
+        
+        
+            
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    private List<IGameBorderGenerator> generatePossibleNeutronMoves(IGameBorder gameBorder) {
+
+        Position currentNeutronPosition = gameBorder.getNeutronPosition();
+    
+        return null;
     }
 }
