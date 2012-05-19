@@ -6,5 +6,5 @@ package neutron.Logic.Interfaces;
  * @author Marcin
  */
 public interface IGameBorder {
-
+    BorderElementType[][] getBorder();
 }
