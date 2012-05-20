@@ -72,7 +72,7 @@ public class NWMoveTest {
         assertEquals(null, newBorder);
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 1));
-
+        
         assertEquals(BorderElementType.Black, newBorder.getElement(3, 0));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 1));
         

@@ -14,17 +14,34 @@ public class NWMove implements IMove {
     @Override
     public IGameBorder Move(IGameBorder border, BorderElementType type, Position pos) {
        
-        if(pos.getX() == 0) {
+        if(pos.getX() == 0 || pos.getY() == 0) {
             return null; 
         }
         
         BorderElementType[][] b = border.copyBorder();
         
-        // jezeli nie napotkano przeszkody to oznacza, ze element mozna polozyc na samej gorze.
-        b[pos.getX()][pos.getY()] = BorderElementType.Blank;
-        b[0][0] = type;
+        int i = pos.getX() - 1;
+        int j = pos.getY() - 1;
+        
+        while(true) {
+            
+            if(i >= 0 && j >= 0 && border.getElement(i, j) != BorderElementType.Blank) {
+                b[pos.getX()][pos.getY()] = BorderElementType.Blank;
+                b[i + 1][j + 1] = type;
                 
-        return GameBorderFactory.Create(b);
+                return GameBorderFactory.Create(b);
+            }
+            
+            if(i <= 0 || j < 0) {
+                b[pos.getX()][pos.getY()] = BorderElementType.Blank;
+                b[i + 1][j + 1] = type;
+                
+                return GameBorderFactory.Create(b);
+            }
+            
+            --i;
+            --j;
+        }
     }
     
 }
