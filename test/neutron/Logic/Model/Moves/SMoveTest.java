@@ -42,10 +42,10 @@ public class SMoveTest {
         IGameBorder newBorder = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
     
         assertEquals(BorderElementType.Blank, newBorder.getElement(2, 2));
-        assertEquals(BorderElementType.Neutron, newBorder.getElement(2, 3));
+        assertEquals(BorderElementType.Neutron, newBorder.getElement(3, 2));
         
         assertEquals(BorderElementType.Neutron, border.getElement(2, 2));
-        assertEquals(BorderElementType.Blank, border.getElement(2, 3));
+        assertEquals(BorderElementType.Blank, border.getElement(3, 2));
     }
     
     @Test
@@ -70,10 +70,10 @@ public class SMoveTest {
         IGameBorder newBorder = m.Move(border, BorderElementType.White, new Position(0, 0));
     
         assertEquals(BorderElementType.Blank, newBorder.getElement(0, 0));
-        assertEquals(BorderElementType.White, newBorder.getElement(0, 3));
+        assertEquals(BorderElementType.White, newBorder.getElement(3, 0));
         
         assertEquals(BorderElementType.White, border.getElement(0, 0));
-        assertEquals(BorderElementType.Blank, border.getElement(0, 3));
+        assertEquals(BorderElementType.Blank, border.getElement(3, 0));
     }
     
     @Test
@@ -83,12 +83,12 @@ public class SMoveTest {
         IGameBorder border = gbg.generateNewGame(5); 
     
         IMove m = new SMove();       
-        IGameBorder newBorder = m.Move(border, BorderElementType.White, new Position(2, 0));
+        IGameBorder newBorder = m.Move(border, BorderElementType.White, new Position(0, 2));
     
-        assertEquals(BorderElementType.Blank, newBorder.getElement(2, 0));
-        assertEquals(BorderElementType.White, newBorder.getElement(2, 1));
+        assertEquals(BorderElementType.Blank, newBorder.getElement(0, 2));
+        assertEquals(BorderElementType.White, newBorder.getElement(1, 2));
         
-        assertEquals(BorderElementType.White, border.getElement(2, 0));
-        assertEquals(BorderElementType.Blank, border.getElement(2, 1));
+        assertEquals(BorderElementType.White, border.getElement(0, 2));
+        assertEquals(BorderElementType.Blank, border.getElement(1, 2));
     }
 }

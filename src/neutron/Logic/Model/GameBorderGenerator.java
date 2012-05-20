@@ -1,8 +1,8 @@
 package neutron.Logic.Model;
 
-import neutron.Logic.Exceptions.NeutronBlockedException;
 import java.util.LinkedList;
 import java.util.List;
+import neutron.Logic.Exceptions.NeutronBlockedException;
 import neutron.Logic.Interfaces.BorderElementType;
 import neutron.Logic.Interfaces.IGameBorder;
 import neutron.Logic.Interfaces.IGameBorderGenerator;
@@ -24,14 +24,12 @@ public class GameBorderGenerator implements IGameBorderGenerator {
         BorderElementType[][] border = new BorderElementType[borderSize][borderSize];
         
         for(int i = 0; i < borderSize; ++i) {
+            
+            border[0][i] = BorderElementType.White;
+            border[borderSize - 1][i] = BorderElementType.Black;            
+            
             for(int j = 0; j < borderSize; ++j) {
-                if(i == 0) {
-                    border[0][j] = BorderElementType.White;
-                }
-                else if(i == borderSize - 1) {
-                    border[i][j] = BorderElementType.Black;
-                }
-                else {
+                if(i != 0 && i != borderSize - 1) {
                     border[i][j] = BorderElementType.Blank;
                 }
             }

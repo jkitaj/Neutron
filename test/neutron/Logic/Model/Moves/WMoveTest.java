@@ -42,10 +42,10 @@ public class WMoveTest {
         IGameBorder newBorder = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
     
         assertEquals(BorderElementType.Blank, newBorder.getElement(2, 2));
-        assertEquals(BorderElementType.Neutron, newBorder.getElement(0, 2));
+        assertEquals(BorderElementType.Neutron, newBorder.getElement(2, 0));
         
         assertEquals(BorderElementType.Neutron, border.getElement(2, 2));
-        assertEquals(BorderElementType.Blank, border.getElement(0, 2));
+        assertEquals(BorderElementType.Blank, border.getElement(2, 0));
     }
     
     @Test
@@ -55,7 +55,7 @@ public class WMoveTest {
         IGameBorder border = gbg.generateNewGame(5); 
     
         IMove m = new WMove();       
-        IGameBorder newBorder = m.Move(border, BorderElementType.White, new Position(0, 4));
+        IGameBorder newBorder = m.Move(border, BorderElementType.White, new Position(4, 0));
     
         assertEquals(null, newBorder);
     }

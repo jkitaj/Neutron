@@ -39,12 +39,12 @@ public class NMoveTest {
     
         NMove m = new NMove();       
         IGameBorder newBorder = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
-    
+        
         assertEquals(BorderElementType.Blank, newBorder.getElement(2, 2));
-        assertEquals(BorderElementType.Neutron, newBorder.getElement(2, 1));
+        assertEquals(BorderElementType.Neutron, newBorder.getElement(1, 2));
         
         assertEquals(BorderElementType.Neutron, border.getElement(2, 2));
-        assertEquals(BorderElementType.Blank, border.getElement(2, 1));
+        assertEquals(BorderElementType.Blank, border.getElement(1, 2));
     }
     
     @Test
@@ -66,13 +66,13 @@ public class NMoveTest {
         IGameBorder border = gbg.generateNewGame(5); 
     
         NMove m = new NMove();       
-        IGameBorder newBorder = m.Move(border, BorderElementType.Black, new Position(0, 4));
+        IGameBorder newBorder = m.Move(border, BorderElementType.Black, new Position(4, 0));
     
-        assertEquals(BorderElementType.Blank, newBorder.getElement(0, 4));
-        assertEquals(BorderElementType.Black, newBorder.getElement(0, 1));
+        assertEquals(BorderElementType.Blank, newBorder.getElement(4, 0));
+        assertEquals(BorderElementType.Black, newBorder.getElement(1, 0));
         
-        assertEquals(BorderElementType.Black, border.getElement(0, 4));
-        assertEquals(BorderElementType.Blank, border.getElement(0, 1));
+        assertEquals(BorderElementType.Black, border.getElement(4, 0));
+        assertEquals(BorderElementType.Blank, border.getElement(1, 0));
     }
     
     @Test
@@ -82,12 +82,12 @@ public class NMoveTest {
         IGameBorder border = gbg.generateNewGame(5); 
     
         NMove m = new NMove();       
-        IGameBorder newBorder = m.Move(border, BorderElementType.Black, new Position(2, 4));
-    
-        assertEquals(BorderElementType.Blank, newBorder.getElement(2, 4));
-        assertEquals(BorderElementType.Black, newBorder.getElement(2, 3));
+        IGameBorder newBorder = m.Move(border, BorderElementType.Black, new Position(4, 2));
         
-        assertEquals(BorderElementType.Black, border.getElement(2, 4));
-        assertEquals(BorderElementType.Blank, border.getElement(2, 3));
+        assertEquals(BorderElementType.Blank, newBorder.getElement(4, 2));
+        assertEquals(BorderElementType.Black, newBorder.getElement(3, 2));
+        
+        assertEquals(BorderElementType.Black, border.getElement(4, 2));
+        assertEquals(BorderElementType.Blank, border.getElement(3, 2));
     }
 }

@@ -14,5 +14,9 @@ public interface IGameBorder {
     
     BorderElementType[][] getBorder();
 
+    BorderElementType[][] copyBorder();
+    
     Position getNeutronPosition();
+
+    void write();
 }

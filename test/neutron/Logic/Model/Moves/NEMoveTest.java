@@ -68,11 +68,13 @@ public class NEMoveTest {
     
         IMove m = new NEMove();       
         IGameBorder newBorder = m.Move(border, BorderElementType.Black, new Position(4, 0));
-    
+        
         assertEquals(BorderElementType.Black, newBorder.getElement(3, 1));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 0));
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 1));
+
+        //newBorder.write();
 
         assertEquals(BorderElementType.Black, newBorder.getElement(1, 4));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 1));
@@ -83,6 +85,8 @@ public class NEMoveTest {
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 2));
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 3));
+    
+        //newBorder.write();
         
         assertEquals(BorderElementType.Black, newBorder.getElement(3, 4));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 3));

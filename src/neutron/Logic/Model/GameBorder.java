@@ -43,4 +43,28 @@ public class GameBorder implements IGameBorder {
     public BorderElementType getElement(int i, int j) {
         return border[i][j];
     }
+
+    @Override
+    public BorderElementType[][] copyBorder() {
+    
+        BorderElementType[][] b = new BorderElementType[border.length][border.length];
+        
+        for(int i = 0; i < border.length; ++i) {
+            for(int j = 0; j < border.length; ++j) {
+                b[i][j] = border[i][j];
+            }
+        }
+        
+        return b;
+    }
+
+    @Override
+    public void write() {
+        for(int i = 0; i < border.length; ++i) {
+            for(int j = 0; j < border.length; ++j) {
+                System.out.printf("%s ", border[i][j]);
+            }
+            System.out.println();
+        }
+    }
 }

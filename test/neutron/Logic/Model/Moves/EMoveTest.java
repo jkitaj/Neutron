@@ -40,12 +40,12 @@ public class EMoveTest {
     
         IMove m = new EMove();       
         IGameBorder newBorder = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
-    
+        
         assertEquals(BorderElementType.Blank, newBorder.getElement(2, 2));
-        assertEquals(BorderElementType.Neutron, newBorder.getElement(4, 2));
+        assertEquals(BorderElementType.Neutron, newBorder.getElement(2, 4));
         
         assertEquals(BorderElementType.Neutron, border.getElement(2, 2));
-        assertEquals(BorderElementType.Blank, border.getElement(4, 2));
+        assertEquals(BorderElementType.Blank, border.getElement(2, 4));
     }
     
     @Test
