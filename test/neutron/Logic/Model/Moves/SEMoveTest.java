@@ -68,27 +68,31 @@ public class SEMoveTest {
     
         IMove m = new SEMove();       
         IGameBorder newBorder = m.Move(border, BorderElementType.White, new Position(0, 0));
+        newBorder.write();
     
         assertEquals(BorderElementType.White, newBorder.getElement(1, 1));
         assertEquals(BorderElementType.Blank, newBorder.getElement(0, 0));
         
         newBorder = m.Move(border, BorderElementType.White, new Position(0, 1));
-
+        newBorder.write();
+        
         assertEquals(BorderElementType.White, newBorder.getElement(3, 4));  
         assertEquals(BorderElementType.Blank, newBorder.getElement(0, 1));
         
         newBorder = m.Move(border, BorderElementType.White, new Position(0, 2));
+        newBorder.write();
         
         assertEquals(BorderElementType.White, newBorder.getElement(2, 4));
         assertEquals(BorderElementType.Blank, newBorder.getElement(0, 2));
         
         newBorder = m.Move(border, BorderElementType.White, new Position(0, 3));
+        newBorder.write();
         
         assertEquals(BorderElementType.White, newBorder.getElement(1, 4));
         assertEquals(BorderElementType.Blank, newBorder.getElement(0, 3));
         
         newBorder = m.Move(border, BorderElementType.White, new Position(0, 4));
-    
+        
         assertEquals(null, newBorder);
     }
 }

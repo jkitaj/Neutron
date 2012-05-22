@@ -14,16 +14,33 @@ public class SEMove implements IMove {
     @Override
     public IGameBorder Move(IGameBorder border, BorderElementType type, Position pos) {
             
-        if(pos.getY() == border.getBorderSize() - 1) {
+        if(pos.getX() == border.getBorderSize() - 1 || pos.getY() == border.getBorderSize() - 1) {
             return null; 
         }
         
         BorderElementType[][] b = border.copyBorder();
         
-        b[pos.getX()][pos.getY()] = BorderElementType.Blank;
-        b[border.getBorderSize() - 1][border.getBorderSize() - 1] = type;
+        int i = pos.getX() + 1;
+        int j = pos.getY() + 1;
+        
+        while(true) {
+            
+            if(i < border.getBorderSize() && j < border.getBorderSize() && border.getElement(i, j) != BorderElementType.Blank) {
+                b[pos.getX()][pos.getY()] = BorderElementType.Blank;
+                b[i - 1][j - 1] = type;
                 
-        return GameBorderFactory.Create(b);
+                return GameBorderFactory.Create(b);
+            }
+            
+            if(i >= border.getBorderSize() || j >= border.getBorderSize()) {
+                b[pos.getX()][pos.getY()] = BorderElementType.Blank;
+                b[i - 1][j - 1] = type;
+                
+                return GameBorderFactory.Create(b);
+            }
+            
+            ++i;
+            ++j;
+        }
     }
-    
 }
