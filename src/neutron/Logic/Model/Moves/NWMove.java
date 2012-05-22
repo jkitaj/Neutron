@@ -32,7 +32,7 @@ public class NWMove implements IMove {
                 return GameBorderFactory.Create(b);
             }
             
-            if(i <= 0 || j < 0) {
+            if(i < 0 || j < 0) {
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                 b[i + 1][j + 1] = type;
                 
