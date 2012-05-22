@@ -40,7 +40,8 @@ public class NWMoveTest {
     
         IMove m = new NWMove();       
         IGameBorder newBorder = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
-    
+        newBorder.write();
+        
         assertEquals(BorderElementType.Blank, newBorder.getElement(2, 2));
         assertEquals(BorderElementType.Neutron, newBorder.getElement(1, 1));
         
@@ -72,22 +73,26 @@ public class NWMoveTest {
         assertEquals(null, newBorder);
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 1));
+        newBorder.write();
         
         assertEquals(BorderElementType.Black, newBorder.getElement(3, 0));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 1));
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 2));
+        newBorder.write();
         
         assertEquals(BorderElementType.Black, newBorder.getElement(2, 0));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 2));
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 3));
+        newBorder.write();
         
         assertEquals(BorderElementType.Black, newBorder.getElement(1, 0));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 3));
         
         newBorder = m.Move(border, BorderElementType.Black, new Position(4, 4));
-    
+        newBorder.write();
+        
         assertEquals(BorderElementType.Black, newBorder.getElement(3, 3));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 4));
     }
