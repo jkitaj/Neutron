@@ -61,12 +61,8 @@ public class GameBorderGeneratorTest {
         IGameBorder game = instance.generateNewGame(5);
         
         List result = instance.generatePossibleMoves(game, BorderElementType.Black);
-    
-        for(Object r : result) {
-            ((IGameBorder)r).write();            
-            System.out.println();
-        }
-
-        //@todo - ten test trzeba sprawdzic, przeliczyc ile dokladnie jest tych ruchow - wyszlo 134 z testu
+        
+        // wszystkich wygenerowanych ruchow powinno byc 95
+        assertEquals(95, result.size());
     }
 }
