@@ -11,9 +11,9 @@ import neutron.Logic.Interfaces.IMove;
 import neutron.Logic.Model.GameBorderGenerator;
 import neutron.Utils.Position;
 import org.junit.AfterClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *
@@ -95,4 +95,19 @@ public class NEMoveTest {
     
         assertEquals(null, newBorder);
     }
+    
+    @Test
+    public void brak_ruchu_w_kierunku_n() {
+
+        IGameBorderGenerator gbg = new GameBorderGenerator();
+        IGameBorder border = gbg.generateNewGame(5); 
+    
+        IMove m = new SMove();       
+        IGameBorder firstStep = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
+    
+        m = new NEMove();
+        IGameBorder newBorder = m.Move(firstStep, BorderElementType.White, new Position(4, 1));
+        
+        assertNull(newBorder);
+   }
 }

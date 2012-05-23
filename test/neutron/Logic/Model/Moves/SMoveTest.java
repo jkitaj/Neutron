@@ -91,4 +91,19 @@ public class SMoveTest {
         assertEquals(BorderElementType.White, border.getElement(0, 2));
         assertEquals(BorderElementType.Blank, border.getElement(1, 2));
     }
+    
+    @Test
+    public void brak_ruchu_w_kierunku_s() {
+
+        IGameBorderGenerator gbg = new GameBorderGenerator();
+        IGameBorder border = gbg.generateNewGame(5); 
+    
+        IMove m = new NEMove();       
+        IGameBorder firstStep = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
+    
+        m = new SMove();
+        IGameBorder newBorder = m.Move(firstStep, BorderElementType.White, new Position(0, 3));
+        
+        assertNull(newBorder);
+   }
 }

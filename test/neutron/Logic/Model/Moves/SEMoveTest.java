@@ -95,4 +95,19 @@ public class SEMoveTest {
         
         assertEquals(null, newBorder);
     }
+    
+    @Test
+    public void brak_ruchu_w_kierunku_se() {
+
+        IGameBorderGenerator gbg = new GameBorderGenerator();
+        IGameBorder border = gbg.generateNewGame(5); 
+    
+        IMove m = new NEMove();       
+        IGameBorder firstStep = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
+    
+        m = new SEMove();
+        IGameBorder newBorder = m.Move(firstStep, BorderElementType.White, new Position(0, 2));
+        
+        assertNull(newBorder);
+   }
 }

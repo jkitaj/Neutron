@@ -96,4 +96,19 @@ public class NWMoveTest {
         assertEquals(BorderElementType.Black, newBorder.getElement(3, 3));
         assertEquals(BorderElementType.Blank, newBorder.getElement(4, 4));
     }
+    
+    @Test
+    public void brak_ruchu_w_kierunku_nw() {
+
+        IGameBorderGenerator gbg = new GameBorderGenerator();
+        IGameBorder border = gbg.generateNewGame(5); 
+    
+        IMove m = new SMove();       
+        IGameBorder firstStep = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
+    
+        m = new NWMove();
+        IGameBorder newBorder = m.Move(firstStep, BorderElementType.White, new Position(4, 3));
+        
+        assertNull(newBorder);
+   }
 }

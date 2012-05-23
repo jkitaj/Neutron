@@ -11,7 +11,7 @@ import neutron.Logic.Interfaces.IMove;
 import neutron.Logic.Model.GameBorderGenerator;
 import neutron.Utils.Position;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -96,4 +96,19 @@ public class SWMoveTest {
         assertEquals(BorderElementType.White, newBorder.getElement(1, 3));
         assertEquals(BorderElementType.Blank, newBorder.getElement(0, 4));
     }
+    
+    @Test
+    public void brak_ruchu_w_kierunku_sw() {
+
+        IGameBorderGenerator gbg = new GameBorderGenerator();
+        IGameBorder border = gbg.generateNewGame(5); 
+    
+        IMove m = new NEMove();       
+        IGameBorder firstStep = m.Move(border, BorderElementType.Neutron, new Position(2, 2));
+    
+        m = new SWMove();
+        IGameBorder newBorder = m.Move(firstStep, BorderElementType.White, new Position(0, 4));
+        
+        assertNull(newBorder);
+   }
 }
