@@ -8,6 +8,10 @@ import java.util.List;
 import neutron.Logic.Interfaces.BorderElementType;
 import neutron.Logic.Interfaces.IGameBorder;
 import neutron.Logic.Interfaces.IGameBorderGenerator;
+import neutron.Logic.Interfaces.IMove;
+import neutron.Logic.Model.Moves.NWMove;
+import neutron.Logic.Model.Moves.SMove;
+import neutron.Utils.Position;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
@@ -64,5 +68,28 @@ public class GameBorderGeneratorTest {
         
         // wszystkich wygenerowanych ruchow powinno byc 95
         assertEquals(95, result.size());
+    }
+    
+    @Test
+    public void ruch_czarnych_zablokowany() throws Exception {
+        
+        IGameBorderGenerator instance = new GameBorderGenerator();
+        IGameBorder game = instance.generateNewGame(5);
+        
+        IMove m = new SMove();
+        game = m.Move(game, BorderElementType.White, new Position(0, 0));
+        game = m.Move(game, BorderElementType.White, new Position(0, 1));
+        
+        IMove nw = new NWMove();
+        game = nw.Move(game, BorderElementType.Neutron, new Position(2, 2));
+        
+        game = m.Move(game, BorderElementType.White, new Position(0, 2));
+        game = m.Move(game, BorderElementType.White, new Position(0, 3));
+        game = m.Move(game, BorderElementType.White, new Position(0, 4));
+        
+        game.write();
+        
+        List result = instance.generatePossibleMoves(game, BorderElementType.Black);
+        assertNull(result);
     }
 }
