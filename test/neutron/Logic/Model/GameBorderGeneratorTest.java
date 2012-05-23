@@ -57,39 +57,4 @@ public class GameBorderGeneratorTest {
         assertEquals(BorderElementType.Black, border[2][1]);
         assertEquals(BorderElementType.Black, border[2][2]);
     }
-
-    @Test
-    public void new_game_generate_possible_moves() throws Exception {
-        
-        IGameBorderGenerator instance = new GameBorderGenerator();
-        IGameBorder game = instance.generateNewGame(5);
-        
-        List result = instance.generatePossibleMoves(game, BorderElementType.Black);
-        
-        // wszystkich wygenerowanych ruchow powinno byc 95
-        assertEquals(95, result.size());
-    }
-    
-    @Test
-    public void ruch_czarnych_zablokowany() throws Exception {
-        
-        IGameBorderGenerator instance = new GameBorderGenerator();
-        IGameBorder game = instance.generateNewGame(5);
-        
-        IMove m = new SMove();
-        game = m.Move(game, BorderElementType.White, new Position(0, 0));
-        game = m.Move(game, BorderElementType.White, new Position(0, 1));
-        
-        IMove nw = new NWMove();
-        game = nw.Move(game, BorderElementType.Neutron, new Position(2, 2));
-        
-        game = m.Move(game, BorderElementType.White, new Position(0, 2));
-        game = m.Move(game, BorderElementType.White, new Position(0, 3));
-        game = m.Move(game, BorderElementType.White, new Position(0, 4));
-        
-        game.write();
-        
-        List result = instance.generatePossibleMoves(game, BorderElementType.Black);
-        assertNull(result);
-    }
 }
