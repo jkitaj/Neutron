@@ -14,35 +14,35 @@ public class SWMove implements IMove {
     @Override
     public IGameBorder Move(IGameBorder border, BorderElementType type, Position pos) {
                 
-        if(pos.getX() == 0 || pos.getY() >= border.getBorderSize() - 1) {
+        if(pos.getX() >= border.getBorderSize() - 1 || pos.getY() == 0) {
             return null; 
         }
         
         BorderElementType[][] b = border.copyBorder();
         
-        int i = pos.getX() - 1;
-        int j = pos.getY() + 1;
+        int i = pos.getX() + 1;
+        int j = pos.getY() - 1;
         
         while(true) {
             
-            if(i > 0 && j < border.getBorderSize() && border.getElement(i, j) != BorderElementType.Blank) {
+            if(i < border.getBorderSize() && j >= 0 && border.getElement(i, j) != BorderElementType.Blank) {
                 
-                b[i + 1][j - 1] = type;
+                b[i - 1][j + 1] = type;
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                 
                 return GameBorderFactory.Create(b);
             }
             
-            if(i <= 0 || j >= border.getBorderSize()) {
+            if(i >= border.getBorderSize() || j < 0) {
                 
-                b[i + 1][j - 1] = type;
+                b[i - 1][j + 1] = type;
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                 
                 return GameBorderFactory.Create(b);
             }
             
-            --i;
-            ++j;
+            ++i;
+            --j;
         }
     }
     
