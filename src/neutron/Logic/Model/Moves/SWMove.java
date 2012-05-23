@@ -27,6 +27,10 @@ public class SWMove implements IMove {
             
             if(i < border.getBorderSize() && j >= 0 && border.getElement(i, j) != BorderElementType.Blank) {
                 
+                if(i - 1 == pos.getX() && j + 1 == pos.getY()) {
+                    return null;
+                }
+                
                 b[i - 1][j + 1] = type;
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                 
@@ -34,6 +38,10 @@ public class SWMove implements IMove {
             }
             
             if(i >= border.getBorderSize() || j < 0) {
+                
+                if(i - 1 == pos.getX() && j + 1 == pos.getY()) {
+                    return null;
+                }
                 
                 b[i - 1][j + 1] = type;
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;

@@ -26,6 +26,11 @@ public class NEMove implements IMove {
         while(true) {
             
             if(i >= 0 && j < border.getBorderSize() && border.getElement(i, j) != BorderElementType.Blank) {
+                
+                if(i + 1 == pos.getX() && j - 1 == pos.getY()) {
+                    return null;
+                }
+                
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                 b[i + 1][j - 1] = type;
                 
@@ -33,6 +38,11 @@ public class NEMove implements IMove {
             }
             
             if(i < 0 || j >= border.getBorderSize()) {
+                
+                if(i + 1 == pos.getX() && j - 1 == pos.getY()) {
+                    return null;
+                }
+                                
                 b[pos.getX()][pos.getY()] = BorderElementType.Blank;
                 b[i + 1][j - 1] = type;
                 
