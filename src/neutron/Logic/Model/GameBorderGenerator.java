@@ -68,7 +68,7 @@ public class GameBorderGenerator implements IGameBorderGenerator {
         
         List<IGameBorder> list = new LinkedList<IGameBorder>();
         int borderSize = neutronMoves.get(0).getBorderSize();
-                
+        
         for(IGameBorder nm: neutronMoves) {
             for(int i = 0; i < borderSize; ++i) {
                 for(int j = 0; j < borderSize; ++j) {
